@@ -1,7 +1,7 @@
 import * as sinon from 'sinon';
 import * as chai from 'chai';
 import { Response } from 'superagent';
-import MatchModel from '../database/models/MatchModel.ts';
+import MatchModel from '../database/models/MatchModel';
 // @ts-ignore
 import chaiHttp = require('chai-http');
 import { app } from '../app';

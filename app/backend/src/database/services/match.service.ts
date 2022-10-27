@@ -1,5 +1,5 @@
 import IMatch from '../interfaces/IMatch';
-import MatchModel from '../models/MatchModel.ts';
+import MatchModel from '../models/MatchModel';
 import Team from '../models/TeamsModel';
 
 class MatchService {
