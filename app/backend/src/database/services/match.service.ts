@@ -32,17 +32,16 @@ export default class MatchService {
     return finish;
   }
 
-  public async addNew(newMatch: object): Promise<IMatch> {
-    const data = await this.modelMacth.create(newMatch);
-    return data as IMatch;
-  }
-
   public async update(id: string, homeTeamGoals: number, awayTeamGoals: number)
     : Promise<IMatch | null> {
     const data = await this.modelMacth.findByPk(id);
     if (!data) return null;
-
     const updated = await data.update({ homeTeamGoals, awayTeamGoals });
     return updated;
+  }
+
+  public async addNew(newMatch: object): Promise<IMatch> {
+    const data = await this.modelMacth.create(newMatch);
+    return data as IMatch;
   }
 }

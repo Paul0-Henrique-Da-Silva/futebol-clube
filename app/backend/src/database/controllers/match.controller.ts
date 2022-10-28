@@ -26,6 +26,13 @@ export default class MatchController {
     return response.status(200).json({ message: 'Finished' });
   };
 
+  public update = async (request: Request, response: Response): Promise<Response> => {
+    const { id } = request.params;
+    const { homeTeamGoals, awayTeamGoals } = request.body;
+    const updated = await this.serviceMatch.update(id, homeTeamGoals, awayTeamGoals);
+    return response.status(200).json(updated);
+  };
+
   public addNew = async (request: Request, response: Response): Promise<Response> => {
     const { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals } = request.body;
     const inProgress = true;
@@ -34,4 +41,3 @@ export default class MatchController {
     return response.status(201).json(data);
   };
 }
-
