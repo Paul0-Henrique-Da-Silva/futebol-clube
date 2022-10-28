@@ -4,7 +4,7 @@ import UserModel from '../models/UsersModel';
 import bcrypt from '../helpers/bcrypt';
 import jwt from '../helpers/jwt';
 
-class UserService {
+export default class UserService {
   private modelUser = UserModel;
 
   public async login(email: string, password: string): Promise<IToken | null> {
@@ -20,5 +20,3 @@ class UserService {
     return user.role;
   }
 }
-
-export default UserService;

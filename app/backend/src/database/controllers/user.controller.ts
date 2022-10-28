@@ -6,7 +6,7 @@ import UserService from '../services/user.service';
 
 const SECRET = process.env.JWT_SECRET;
 
-class UserController {
+export default class UserController {
   constructor(
     private serviceUser = new UserService(),
   ) {}
@@ -30,4 +30,3 @@ class UserController {
   };
 }
 
-export default UserController;

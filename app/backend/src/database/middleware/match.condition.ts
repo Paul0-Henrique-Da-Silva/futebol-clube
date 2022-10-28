@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import MatchModel from '../models/MatchModel';
 
-class Condition {
+export default class Condition {
   private modelMacth = MatchModel;
 
   public noEquals = async (request: Request, response: Response, next: NextFunction):
@@ -28,5 +28,3 @@ class Condition {
     next();
   };
 }
-
-export default Condition;

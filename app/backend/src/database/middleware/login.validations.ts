@@ -12,7 +12,7 @@ const userlogin = Joi.object({
     .messages({ 'string.empty': 'All fields must be filled' }),
 });
 
-class Validation {
+export default class Validation {
   private model = UserModel;
   constructor(
     private userService = new UserService(),
@@ -38,5 +38,3 @@ class Validation {
     next();
   };
 }
-
-export default Validation;

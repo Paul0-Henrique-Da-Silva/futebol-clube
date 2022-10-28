@@ -4,7 +4,7 @@ import { IAuthorization } from '../interfaces/IAuthorization';
 
 const secret = process.env.JWT_SECRET as string;
 
-class Validation {
+export default class Validation {
   public requiretoken = async (request: Request, response: Response, next: NextFunction):
   Promise<Response | undefined> => {
     try {
@@ -17,5 +17,3 @@ class Validation {
     }
   };
 }
-
-export default Validation;

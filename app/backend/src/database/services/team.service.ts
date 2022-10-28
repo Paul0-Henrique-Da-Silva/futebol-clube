@@ -1,7 +1,7 @@
 import TeamModel from '../models/TeamsModel';
 import { ITeam } from '../interfaces/ITeam';
 
-class TeamService {
+export default class TeamService {
   private modelTeam = TeamModel;
 
   public async getAll(): Promise<ITeam[]> {
@@ -14,5 +14,3 @@ class TeamService {
     return data as ITeam;
   }
 }
-
-export default TeamService;

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import TeamService from '../services/team.service';
 
-class TeamsController {
+export default class TeamsController {
   constructor(private serviceTeam = new TeamService()) { }
 
   public getAll = async (_request: Request, response: Response): Promise<Response> => {
@@ -15,5 +15,3 @@ class TeamsController {
     return response.status(200).json(data);
   };
 }
-
-export default TeamsController;
