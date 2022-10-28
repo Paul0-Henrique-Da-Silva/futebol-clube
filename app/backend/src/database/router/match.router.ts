@@ -11,6 +11,12 @@ const condition = new Condition();
 
 router.get('/', matchController.getProgressFilter);
 router.patch('/:id/finish', matchController.finish);
-router.post('/', condition.noEquals, validation.requiretoken, matchController.addNew);
+router.post(
+  '/',
+  condition.noEquals,
+  condition.teamsExist,
+  validation.requiretoken,
+  matchController.addNew,
+);
 
 export default router;
