@@ -36,13 +36,6 @@ describe('', async () => {
     });
 });
 
-const newMatchEqualTeams = {
-  homeTeam: 1,
-  homeTeamGoals: 1,
-  awayTeam: 1,
-  awayTeamGoals: 4,
-}
-
 describe('', async () => {
   let requestHttp: Response; let response: Response;
   beforeEach(async () => {

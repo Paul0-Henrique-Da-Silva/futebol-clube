@@ -9,11 +9,11 @@ class Validation {
   Promise<Response | undefined> => {
     try {
       const { authorization } = request.headers as IAuthorization;
-      const auth = authorization.replace('Bearer ', '');
+      const auth = authorization.replace('Bearer ', ''); // or split(" ")[1]
       Jwt.verify(auth as string, secret);
       next();
     } catch (error) {
-      return response.status(401).json({ message: 'Token invalid or expired' });
+      return response.status(401).json({ message: 'Token must be a valid token' });
     }
   };
 }
