@@ -11,6 +11,6 @@ const condition = new Condition();
 
 router.get('/', matchController.getProgressFilter);
 router.patch('/:id/finish', matchController.finish);
-router.post('/', validation.requiretoken, condition.noEquals, matchController.addNew);
+router.post('/', condition.noEquals, validation.requiretoken, matchController.addNew);
 
 export default router;
