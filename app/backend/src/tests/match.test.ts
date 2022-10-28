@@ -8,7 +8,6 @@ import { app } from '../app';
 
 chai.use(chaiHttp);
 
-
 const { expect } = chai;
 
 describe('', () => {
@@ -36,27 +35,12 @@ describe('', async () => {
       expect(response.status).to.be.equal(200);
     });
 });
+const validUserDatabase = {
+  email: 'admin@admin.com',
+  password: 'secret_admin',
+}
 
-describe('', async () => {
-  let requestHttp: Response; let responseHttp: Response;
 
-  beforeEach(async () => {
-    requestHttp = await chai.request(app).post('/login').send(validUser());
-    responseHttp = await chai.request(app).post('/matches')
-    .set('authorization', requestHttp.body.token).send(newMatch());
-    sinon.stub(MatchModel, 'findOne').resolves(newMatch() as MatchModel)
-  });
-  afterEach(() => (MatchModel.findOne as sinon.SinonStub).restore());
-
-  it('"POST/matches", salvar uma partida com o status de inProgress', async () => {
-    expect(responseHttp.body)
-    .to.be.deep.equal(
-    { ...newMatch(), id: responseHttp.body.id, inProgress: responseHttp.body.inProgress });
-    expect(responseHttp.status).to.be.equal(201);
-  });
-});
-
-// mocks (brincando com Hoisting)
 function match () {
     return [
             {
@@ -121,18 +105,4 @@ function dataMatchesProgress () {
           }
         }
       ]    
-}
-
-function validUser () {
-  return { email: 'admin@admin.com', password: 'secret_admin'}
-}
-
-function newMatch () {
-   return {
-    homeTeam: 16, 
-    awayTeam: 8, 
-    homeTeamGoals: 2,
-    awayTeamGoals: 2
-  }
-   
 }

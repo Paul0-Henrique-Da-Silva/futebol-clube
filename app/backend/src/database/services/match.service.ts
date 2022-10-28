@@ -28,15 +28,10 @@ class MatchService {
   }
 
   public async finish(id: string): Promise<IMatch | null> {
-    const match = await this.modelMacth.findByPk(id);
-    if (!match) return null;
-
-    const update = await this.modelMacth.update(
-      { inProgress: false },
-      { where: { id } },
-    );
-    const data = await match.update(update);
-    return data;
+    const data = await this.modelMacth.findByPk(id);
+    if (!data) return null;
+    const finish = await data.update({ inProgress: false });
+    return finish;
   }
 
   public async addNew(newMatch: object): Promise<IMatch> {

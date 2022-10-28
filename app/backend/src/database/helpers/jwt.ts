@@ -7,7 +7,7 @@ const jwt = (user: IUser) => {
   const token = Jwt.sign(
     { userId: user.id },
     SECRET as string,
-    { algorithm: 'HS256', expiresIn: '3600' },
+    { algorithm: 'HS256', expiresIn: '3d' },
   );
 
   return token;
