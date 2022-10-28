@@ -5,7 +5,8 @@ class Condition {
   Promise<Response | undefined> => {
     const { homeTeam, awayTeam } = request.body;
     if (homeTeam === awayTeam) {
-      return response.status(401).json({ message: 'There is no team with such id!' });
+      return response.status(422)
+        .json({ message: 'It is not possible to create a match with two equal teams' });
     }
     next();
   };

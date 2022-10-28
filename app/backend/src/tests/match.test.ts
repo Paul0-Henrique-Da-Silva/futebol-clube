@@ -47,9 +47,9 @@ describe('', async () => {
 
   afterEach(() => (MatchModel.findOne as sinon.SinonStub).restore());
   
-  it('"POST/macth", Com valores igual do time, retorne erro com o status 401', async () => {
-    expect(response.body).to.be.deep.equal({ message: 'There is no team with such id!' });
-    expect(response.status).to.be.equal(401);
+  it('"POST/macth", Com valores igual do time, retorne erro com o status 422', async () => {
+    expect(response.body).to.be.deep.equal({ message: 'It is not possible to create a match with two equal teams' });
+    expect(response.status).to.be.equal(422);
   });
 });
 
