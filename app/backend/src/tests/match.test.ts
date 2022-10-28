@@ -53,6 +53,16 @@ describe('', async () => {
   });
 });
 
+describe('', async () => {
+  it('"POST/macth/id" update match', async () => {
+    const response = await chai.request(app).patch('/matches/1')
+    .send({ homeTeamGoals: 1, awayTeamGoals: 1 });
+
+    expect(response.body).to.be.deep.equal(update());
+    expect(response.status).to.be.equal(200);
+  });
+})
+
 function matchEquals () {
  return {
    homeTeam: 2,
@@ -133,4 +143,15 @@ function dataMatchesProgress () {
           }
         }
       ]    
+}
+
+function update () {
+  return {
+    id: 1,
+    homeTeam: 16,
+    homeTeamGoals: 1,
+    awayTeam: 8,
+    awayTeamGoals: 1,
+    inProgress: false,
+  }
 }
