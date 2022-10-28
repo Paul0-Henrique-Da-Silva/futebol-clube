@@ -10,6 +10,7 @@ const validation = new Validation();
 const condition = new Condition();
 
 router.get('/', matchController.getProgressFilter);
+router.patch('/:id', matchController.update);
 router.patch('/:id/finish', matchController.finish);
 router.post(
   '/',
