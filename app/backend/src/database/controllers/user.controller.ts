@@ -13,6 +13,7 @@ export default class UserController {
 
   public login = async (request: Request, response: Response): Promise<Response> => {
     const { email, password } = request.body;
+    if (!password) return response.status(401).json({ message: 'Incorrect email or password' });
     const token = await this.serviceUser.login(email, password);
     return response.status(200).json({ token });
   };
@@ -29,4 +30,3 @@ export default class UserController {
     }
   };
 }
-
