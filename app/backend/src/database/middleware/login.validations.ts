@@ -6,7 +6,7 @@ import { IUser } from '../interfaces/IUser';
 
 const userlogin = Joi.object({
   password: Joi.string().required()
-    .messages({ 'string.empty': 'All fields must be filled' }),
+    .messages({ 'string.empty': 'Incorrect email or password' }),
   email: Joi.string().required()
     .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required()
     .messages({ 'string.empty': 'All fields must be filled' }),
@@ -28,7 +28,7 @@ export default class Validation {
     const user = await this.model.findOne({ where: { email }, raw: true }) as IUser;
     if (!user) {
       return response.status(401)
-        .json({ message: 'Incorrect email or password' });
+        .json({ message: 'All fields must be filled' });
     }
     const token = await this.userService.login(email, password);
     if (!token) {

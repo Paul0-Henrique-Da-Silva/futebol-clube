@@ -42,7 +42,7 @@ describe('', () => {
       email: 'any_email@gmail.com',
       password: ''
     });
-    expect(response.body).to.be.deep.equal({ message: 'All fields must be filled' });
+    expect(response.body).to.be.deep.equal({ message: 'Incorrect email or password' });
     expect(response.status).to.be.equal(400);
   });
 });
