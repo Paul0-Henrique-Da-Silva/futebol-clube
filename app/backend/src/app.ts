@@ -3,6 +3,7 @@ import * as express from 'express';
 import loginRoute from './database/router/login.router';
 import teamRoute from './database/router/team.router';
 import macthRoute from './database/router/match.router';
+import leaderboardRouter from './database/router/leader.router';
 
 class App {
   public app: express.Express;
@@ -18,6 +19,7 @@ class App {
     this.app.use('/login/validate', loginRoute);
     this.app.use('/teams', teamRoute);
     this.app.use('/matches', macthRoute);
+    this.app.use('/leaderboard', leaderboardRouter);
   }
 
   private config():void {
