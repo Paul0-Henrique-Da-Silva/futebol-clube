@@ -12,7 +12,7 @@ const userlogin = Joi.object({
     .messages({ 'string.empty': 'All fields must be filled' }),
 });
 
-export default class Validation {
+class Validation {
   private model = UserModel;
   constructor(
     private userService = new UserService(),
@@ -33,8 +33,10 @@ export default class Validation {
     const token = await this.userService.login(email, password);
     if (!token) {
       return response.status(401)
-        .json({ message: 'Need a token!' });
+        .json({ message: 'Incorrect email or password' });
     }
     next();
   };
 }
+
+export default Validation;
